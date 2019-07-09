@@ -1,15 +1,23 @@
 package com.raon.raonqna.kms.service;
 
-import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.raon.raonqna.kms.Model.Users;
 import com.raon.raonqna.kms.repository.UsersRepository;
 
+@Service
 public class JoinService {
-	public void joinUser(HttpServletRequest request, UsersRepository usersRepository) {
-		String userId = request.getParameter("user_id");
-		String userPw = request.getParameter("user_pw");
-		String userName = request.getParameter("user_name");
+	
+	@Autowired
+	private UsersRepository usersRepository;
+	
+	public String joinUser(String userId, String userPw, String userName) {
+		
+		if(userId.equals("") || userPw.equals("") || userName.equals("")) {
+			return "join";
+		}
 
 		Users users = new Users();
 		users.setUser_id(userId);
@@ -17,6 +25,7 @@ public class JoinService {
 		users.setUser_name(userName);
 		
 		usersRepository.save(users);
+		return "index";
 	}
 
 }
