@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "t_user")
 public class Users {
@@ -13,10 +15,11 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String user_id;
-	private String user_pw;
-	private String user_name;
-	public Long getId() {
+	private String userid;
+	private String password;
+	private String username;
+	
+	/*public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
@@ -40,6 +43,6 @@ public class Users {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
+*/
 	
 }
