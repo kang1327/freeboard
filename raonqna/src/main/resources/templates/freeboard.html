@@ -79,20 +79,21 @@
     </div>
     <div class="col-sm-8 text-left"> 
       <h4>Freeboard</h4>
+      <a href="/freeboardWritePage">글쓰기</a>
       <table>
       	<thead>
       		<tr>
-      			<th>글 번호</th>
-      			<th>글 제목</th>
-      			<th>작성자</th>
+      			<th>&nbsp;&nbsp;글 번호&nbsp;&nbsp;</th>
+      			<th>&nbsp;&nbsp;글 제목&nbsp;&nbsp;</th>
+      			<th>&nbsp;&nbsp;작성자&nbsp;&nbsp;</th>
       			
       		</tr>
       		<th:block th:if="${session.boardList!=null}">
 	      		<th:block th:each="board:${session.boardList}">
-		      		<tr>
-		      			<td><span th:text="${session.getFreeid()}"></span></td>
-		      			<td><span th:text="${session.geTitle()}"></span></td>
-		      			<td><span th:text="${session.getWriter()}"></span></td>
+		      		<tr> 
+		      			<td><span th:text="${board.getFreeid()}"></span></td>
+		      			<td><span th:text="${board.getTitle()}"></span></td>
+		      			<td><span th:text="${board.getWriter()}"></span></td>
 		      		</tr>
 		      	</th:block>
 	      		

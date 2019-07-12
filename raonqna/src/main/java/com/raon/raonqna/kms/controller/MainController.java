@@ -32,5 +32,10 @@ public class MainController {
 		session.invalidate();
 		return "index";
 	}
+	
+	@GetMapping("/freeboardWritePage")
+	public String freeboardWritePage() {
+		return "freeboardWrite";
+	}
 
 }
