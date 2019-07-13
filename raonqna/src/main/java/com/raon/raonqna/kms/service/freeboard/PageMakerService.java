@@ -11,7 +11,7 @@ public class PageMakerService {
 	public PageMaker generatePageMaker(int pageNum, int contentNum, JpaRepository<Freeboard, Long> repository) {
 		PageMaker pageMaker =new PageMaker();
 		
-		int totalCount = (int) repository.count();
+		int totalCount = (int)repository.count();
 		pageMaker.setTotalCount(totalCount); //전체 게시글 수를 지정한다
 		pageMaker.setPageNum(pageNum-1); //현재 페이지를 페이지 객체에 지정한다. -1을 해야 쿼리에서 사용 할 수 있다.
 		pageMaker.setContentNum(contentNum); //한 페이지에 몇개씩 게시글을 보여줄지 지정한다.

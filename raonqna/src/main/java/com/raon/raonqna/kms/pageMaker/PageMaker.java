@@ -44,7 +44,7 @@ public class PageMaker {
 	}
 
 	public void setEndPage(int getLastblock,int getCurrentBlock) {
-		if (getLastblock==getCurrentBlock()) {
+		if (getLastblock()==getCurrentBlock()) {
 			this.endPage = calcpage(getTotalCount(),getContentNum());
 		}
 		else {
@@ -146,6 +146,3 @@ public class PageMaker {
 
 
 }
-
-
-

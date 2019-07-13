@@ -33,7 +33,7 @@ public class FreeboardListService {
 		PageRequest pageRequest = PageRequest.of(pageNum-1, 10, Sort.Direction.DESC, "freeid");
 		Page<Freeboard> freeboardPage = freeboardRepository.findAll(pageRequest);
 		
-		if(freeboardPage.getSize() ==0) {
+		if(freeboardPage.getSize() == 0) {
 			 
 			 session.setAttribute("boardList",new ArrayList<Freeboard>());
 			 session.setAttribute("pageMaker", pageMaker);

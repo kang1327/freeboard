@@ -32,7 +32,7 @@ public class FreeboardController {
 	}
 	
 	@GetMapping("/freeboard")
-	public String freeboard(@RequestParam(value="stringToInt",defaultValue = "1")String pageNum) {
+	public String freeboard(@RequestParam(value="pageNum",defaultValue = "1")String pageNum) {
 	String page  = freeboardListService.freeboardList(returnIntValue(pageNum));
 	return page;
 
