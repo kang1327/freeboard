@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.raon.raonqna.kms.service.freeboard.FreeboardInfoService;
 import com.raon.raonqna.kms.service.freeboard.FreeboardListService;
 import com.raon.raonqna.kms.service.freeboard.FreeboardWriteService;
 
@@ -21,6 +23,9 @@ public class FreeboardController {
 	
 	@Autowired
 	private FreeboardWriteService freeboardWriteService;
+	
+	@Autowired
+	private FreeboardInfoService freeboardInfoService;
 	
 	private int returnIntValue(String stringToInt) {
 		return Integer.parseInt(stringToInt);
@@ -43,5 +48,14 @@ public class FreeboardController {
 		freeboardWriteService.write(title, content, writer);
 		
 		return "redirect:/freeboard";
+	}
+	
+	
+	
+	@GetMapping("/freeBoardInfo")
+	public String getPost(@RequestParam(value="freeId") String freeId) {
+		String page = freeboardInfoService.getFreeboardPost(freeId);
+		
+		return page;
 	}
 }

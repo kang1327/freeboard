@@ -33,8 +33,8 @@ public class PageMaker {
 		return startPage;
 	}
 
-	public void setStartPage(int currentblock) {
-		this.startPage = (currentblock*5)-4;
+	public void setStartPage(int currentBlock) {
+		this.startPage = (currentBlock*5)-4;
 		//한 페이지에 5개씩 보여지므로
 		//현재 페이지 블록의 번호 * 블록당 페이지의 개수(5) - 4를 하면 시작 페이지 번호를 정할 수 있다
 	}
@@ -43,8 +43,8 @@ public class PageMaker {
 		return endPage;
 	}
 
-	public void setEndPage(int getlastblock,int getcurrentblock) {
-		if (getlastblock==getcurrentblock) {
+	public void setEndPage(int getLastblock,int getCurrentBlock) {
+		if (getLastblock==getCurrentBlock()) {
 			this.endPage = calcpage(getTotalCount(),getContentNum());
 		}
 		else {

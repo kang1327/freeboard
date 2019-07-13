@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
+  
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -41,6 +42,16 @@
       .row.content {height:auto;} 
     }
   </style>
+  <script>
+  	function page(pageNum){
+  		location.href="/freeboard?pageNum="+pageNum;
+  	}
+  	function getPost(freeid){
+  		location.href="/freeBoardInfo?freeId="+freeid;
+  	}
+  
+  </script>
+
 </head>
 <body>
 
@@ -92,7 +103,7 @@
 	      		<th:block th:each="board:${session.boardList}">
 		      		<tr> 
 		      			<td><span th:text="${board.getFreeid()}"></span></td>
-		      			<td><span th:text="${board.getTitle()}"></span></td>
+		      			<td><a th:onclick="|javascript:getPost('${board.getFreeid()}')|" th:text="${board.getTitle()}"></a></td>
 		      			<td><span th:text="${board.getWriter()}"></span></td>
 		      		</tr>
 		      	</th:block>
@@ -102,9 +113,24 @@
       	
       	</thead>
       
-      
-      
       </table>
+      
+      <!-- 페이지 번호 -->
+      
+      <a th:if="${session.pageMaker.isPrev()}" style="text-decoration: none;" th:onclick="|javascript:page('${session.pageMaker.getStartPage()}')|">&laquo;</a>
+      <th:block th:each="pageNum:${#numbers.sequence(session.pageMaker.getStartPage(),session.pageMaker.getEndPage())}">
+  		   &nbsp;<a th:text="${pageNum}" th:onclick="|javascript:page('${pageNum}')|"></a>&nbsp;
+      </th:block>
+	  <a th:if="${session.pageMaker.isNext()}" style="text-decoration: none;" th:onclick="|javascript:page('${session.pageMaker.getEndPage()}')|">&raquo;</a>
+
+
+
+
+      <!-- <th:block th:each="pageNumber:${#numbers.sequence(session.pageMaker.getStartPage(),session.pageMaker.getEndPage())}">
+      	<a onclick="goToFreeboard(${})" th:href="/freeboard?pageNum=${pageNumber}" th:text="${pageNumber}"></a>
+      </th:block>-->
+      
+      
 
     </div>
     <div class="col-sm-2 sidenav">
